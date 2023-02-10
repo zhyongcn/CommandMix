@@ -38,4 +38,6 @@ public interface Constants {
     int Saturday = 6;
 
     String jdbcUrl = "jdbc:TAOS-RS://jiuhua-hvac.top:6041/homedevice?user=zz&password=700802";
+
+    String DownloadUrl = "http://81.68.136.113:8080/upgrade/android.apk";  //TODO: URL 已经更新了。
 }

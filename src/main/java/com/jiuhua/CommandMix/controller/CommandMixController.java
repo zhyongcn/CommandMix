@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.jiuhua.CommandMix.pojo.CommandFromPhone;
+import com.jiuhua.CommandMix.pojo.Constants;
 import com.jiuhua.CommandMix.pojo.VersionInfo;
 import com.jiuhua.CommandMix.service.MyMqttClient;
 
@@ -53,16 +54,10 @@ public class CommandMixController {
         return commandFromPhone;
     }
 
-    @GetMapping("/test")
+    @GetMapping("/test.well-known/acme-challenge/WOf00WZBkCyHK1qLqelwJi48KexGwsEG_2Tximb0Hyg")
     @ResponseBody
-    public String TestOk() {
-
-        if (myMqttClient.getClient() == null) {
-            myMqttClient.start();
-            System.out.println("myMqttClient.start()，重新连接.......");
-        }
-        myMqttClient.publish();
-        return "test--OK!";
+    public String CertbotCheck() {
+        return "WOf00WZBkCyHK1qLqelwJi48KexGwsEG_2Tximb0Hyg.WjO8IvQjwr-UBvT9T7E8Je2TfRifgOSbrj2BxI2odPA";
     }
 
     // 提供待升级的Android app的信息
@@ -73,12 +68,12 @@ public class CommandMixController {
         VersionInfo versioninfo = new VersionInfo();
         versioninfo.setVersionCode(2);
         versioninfo.setAppVersion("2.0.0");
-        versioninfo.setDownloadUrl("http://81.68.136.113:8080/upgrade/android.apk");//TODO: URL 已经更新了。
+        versioninfo.setDownloadUrl(Constants.DownloadUrl);
         versioninfo.setVersionDesc("1. this is a test about app upgrade.");
         return versioninfo;
     }
 
-    // INFO: 以下三个方法提供待升级的Android apk
+    // 以下三个方法提供待升级的Android apk
     // @GetMapping(value = "/downloadFile", consumes = MediaType.ALL_VALUE)
     @GetMapping("/upgrade/boiler.apk")
     void downloadBoilerApkFile(final HttpServletResponse response) throws Exception {
