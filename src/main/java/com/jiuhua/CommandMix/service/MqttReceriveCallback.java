@@ -14,6 +14,7 @@ import org.eclipse.paho.client.mqttv3.MqttConnectOptions;
 import org.eclipse.paho.client.mqttv3.MqttMessage;
 import org.eclipse.paho.client.mqttv3.MqttTopic;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import com.alibaba.fastjson.JSONObject;
 import com.jiuhua.CommandMix.pojo.Boiler;
@@ -24,7 +25,7 @@ import com.jiuhua.CommandMix.pojo.Sensor;
 import com.jiuhua.CommandMix.pojo.TimeStampForMqtt;
 import com.jiuhua.CommandMix.pojo.Watershed;
 
-@Component
+@Service
 public class MqttReceriveCallback implements MqttCallback {
 
     private final HashSet<String> sensorsSet;

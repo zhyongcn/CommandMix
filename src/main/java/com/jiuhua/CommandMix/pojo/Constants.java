@@ -39,5 +39,5 @@ public interface Constants {
 
     String jdbcUrl = "jdbc:TAOS-RS://jiuhua-hvac.top:6041/homedevice?user=zz&password=700802";
 
-    String DownloadUrl = "http://81.68.136.113:8080/upgrade/android.apk";  //TODO: URL 已经更新了。
+    String DownloadUrl = "http://175.24.33.56:8080/upgrade/android.apk";  //TODO: URL 已经更新了。
 }

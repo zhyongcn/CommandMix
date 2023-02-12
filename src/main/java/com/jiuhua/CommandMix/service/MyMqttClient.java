@@ -3,14 +3,14 @@ package com.jiuhua.CommandMix.service;
 import com.jiuhua.CommandMix.pojo.CommandFromPhone;
 import org.eclipse.paho.client.mqttv3.*;
 import org.eclipse.paho.client.mqttv3.persist.MemoryPersistence;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.nio.charset.StandardCharsets;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
-@Component
+@Service
 public class MyMqttClient { // spring 是不是天生单例？？
 
     public static final String HOST = "tcp://175.24.33.56:1883";
