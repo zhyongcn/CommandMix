@@ -15,8 +15,8 @@ public class CommandMixApplication {
         //TODO 下面两句注销之后也可以执行，不再重复读表了，但好像仍然不是全部的表。
         //TODO 有121张表，才读取了20多张
         //同一张表读取了30次  20230120
-        MyMqttClient mqttClient = new MyMqttClient();
-        mqttClient.start();
+        // MyMqttClient mqttClient = new MyMqttClient();
+        // mqttClient.start();
 	}
 
 }

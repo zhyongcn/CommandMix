@@ -1,6 +1,11 @@
 package com.jiuhua.CommandMix.pojo;
 
 public interface Constants {
+
+    String jdbcUrl = "jdbc:TAOS-RS://jiuhua-hvac.top:6041/homedevice?user=zz&password=700802";
+
+    String DownloadUrl = "http://175.24.33.56:8080/upgrade/android.apk";  //TODO: URL 已经更新了。
+
     int roomState_OFF = 0;
     int roomState_MANUAL = 1;
     int roomState_AUTO = 2;
@@ -37,7 +42,5 @@ public interface Constants {
     int Friday = 5;
     int Saturday = 6;
 
-    String jdbcUrl = "jdbc:TAOS-RS://jiuhua-hvac.top:6041/homedevice?user=zz&password=700802";
 
-    String DownloadUrl = "http://175.24.33.56:8080/upgrade/android.apk";  //TODO: URL 已经更新了。
 }

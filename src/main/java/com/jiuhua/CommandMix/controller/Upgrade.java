@@ -7,17 +7,22 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.net.URLEncoder;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.jiuhua.CommandMix.pojo.Constants;
 import com.jiuhua.CommandMix.pojo.VersionInfo;
+import com.jiuhua.CommandMix.service.MyMqttClient;
 
 import jakarta.servlet.http.HttpServletResponse;
 
 @Controller
 public class Upgrade {
+    @Autowired
+    private MyMqttClient myMqttClient = null;
+
     // 提供待升级的Android app的信息
     @GetMapping("/upgrade/versioninfo")
     @ResponseBody
@@ -28,6 +33,12 @@ public class Upgrade {
         versioninfo.setAppVersion("2.0.0");
         versioninfo.setDownloadUrl(Constants.DownloadUrl);
         versioninfo.setVersionDesc("1. this is a test about app upgrade.");
+
+        if (myMqttClient.getClient() == null) {
+            myMqttClient.start();
+            System.out.println("I am upgradeInfo myMqttClient.start()，重新连接.......");
+        }
+        myMqttClient.publish();
         return versioninfo;
     }
 
@@ -37,7 +48,7 @@ public class Upgrade {
     void downloadBoilerApkFile(final HttpServletResponse response) throws Exception {
 
         // 获取文件
-        File file = new File("/home/ubuntu/upgrade/boiler.apk");
+        File file = new File("/home/zz/upgrade/boiler.apk");//TODO: 这里环境不同，不同的主机不一样。
         // 文件名
         String fileName = file.getName();
 
@@ -113,7 +124,7 @@ public class Upgrade {
         response.setHeader("Content-Disposition",
                 "attachment;fileName=" + fileName + ";filename*=utf-8''" + URLEncoder.encode(fileName, "utf-8"));
 
-       downloadFile(response, file);
+        downloadFile(response, file);
 
     }
 
@@ -135,8 +146,8 @@ public class Upgrade {
         response.setHeader("Content-Disposition",
                 "attachment;fileName=" + fileName + ";filename*=utf-8''" + URLEncoder.encode(fileName, "utf-8"));
 
-       downloadFile(response, file);
-      
+        downloadFile(response, file);
+
     }
 
     // 提供待升级的 floorheat.bin
@@ -157,8 +168,8 @@ public class Upgrade {
         response.setHeader("Content-Disposition",
                 "attachment;fileName=" + fileName + ";filename*=utf-8''" + URLEncoder.encode(fileName, "utf-8"));
 
-       downloadFile(response, file);
-        
+        downloadFile(response, file);
+
     }
 
     // 提供待升级的 fancoil.bin
@@ -179,10 +190,10 @@ public class Upgrade {
         response.setHeader("Content-Disposition",
                 "attachment;fileName=" + fileName + ";filename*=utf-8''" + URLEncoder.encode(fileName, "utf-8"));
 
-       downloadFile(response, file);
+        downloadFile(response, file);
     }
 
-    //下载文件的工具
+    // 下载文件的工具
     private void downloadFile(final HttpServletResponse response, File file) {
         byte[] buffer = new byte[1024];
         FileInputStream fis = null;

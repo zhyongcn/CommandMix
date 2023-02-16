@@ -19,7 +19,7 @@ public class test {
 
         if (myMqttClient.getClient() == null) {
             myMqttClient.start();
-            System.out.println("myMqttClient.start()，重新连接.......");
+            System.out.println("I am test myMqttClient.start()，重新连接.......");
         }
         myMqttClient.publish();
 
