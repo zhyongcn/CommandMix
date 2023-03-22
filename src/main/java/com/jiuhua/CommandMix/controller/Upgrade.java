@@ -31,7 +31,7 @@ public class Upgrade {
         VersionInfo versioninfo = new VersionInfo();
         versioninfo.setVersionCode(2);
         versioninfo.setAppVersion("2.0.0");
-        versioninfo.setDownloadUrl(Constants.DownloadUrl);
+        versioninfo.setDownloadUrl(Constants.baseDownloadUrl);
         versioninfo.setVersionDesc("1. this is a test about app upgrade.");
 
         if (myMqttClient.getClient() == null) {
@@ -48,7 +48,7 @@ public class Upgrade {
     void downloadBoilerApkFile(final HttpServletResponse response) throws Exception {
 
         // 获取文件   //FIXME: 下载的文件0字节
-        File file = new File("/home/zz/upgrade/boiler.apk");//TODO: 这里环境不同，不同的主机不一样。
+        File file = new File("/root/upgrade/boiler.apk");//TODO: 这里环境不同，不同的主机不一样。
         // 文件名
         String fileName = file.getName();
 
@@ -69,7 +69,7 @@ public class Upgrade {
     void downloadFloorheatApkFile(final HttpServletResponse response) throws Exception {
 
         // 获取文件
-        File file = new File("/home/ubuntu/upgrade/floorheat.apk");
+        File file = new File("/root/upgrade/floorheat.apk");
         // 文件名
         String fileName = file.getName();
 
@@ -89,7 +89,7 @@ public class Upgrade {
     void downloadHeatpumpSimpleApkFile(final HttpServletResponse response) throws Exception {
 
         // 获取文件
-        File file = new File("/home/ubuntu/upgrade/heatpumpSimple.apk");
+        File file = new File("/root/upgrade/heatpumpSimple.apk");
         // 文件名
         String fileName = file.getName();
 
@@ -111,7 +111,7 @@ public class Upgrade {
     void downloadNTCSensorFile(final HttpServletResponse response) throws Exception {
 
         // 获取文件
-        File file = new File("/home/ubuntu/upgrade/NTC_sensor.bin");
+        File file = new File("/root/upgrade/NTC_sensor.bin");
         // 文件名
         String fileName = file.getName();
 
@@ -133,7 +133,7 @@ public class Upgrade {
     void downloadBoilerFile(final HttpServletResponse response) throws Exception {
 
         // 获取文件
-        File file = new File("/home/ubuntu/upgrade/boiler.bin");
+        File file = new File("/root/upgrade/boiler.bin");
         // 文件名
         String fileName = file.getName();
 
@@ -155,7 +155,7 @@ public class Upgrade {
     void downloadFloorheatFile(final HttpServletResponse response) throws Exception {
 
         // 获取文件
-        File file = new File("/home/ubuntu/upgrade/floorheat.bin");
+        File file = new File("/root/upgrade/floorheat.bin");
         // 文件名
         String fileName = file.getName();
 
@@ -177,7 +177,7 @@ public class Upgrade {
     void downloadFancoilFile(final HttpServletResponse response) throws Exception {
 
         // 获取文件
-        File file = new File("/home/ubuntu/upgrade/fancoil.bin");
+        File file = new File("/root/upgrade/fancoil.bin");
         // 文件名
         String fileName = file.getName();
 

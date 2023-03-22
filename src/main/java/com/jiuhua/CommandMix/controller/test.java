@@ -25,4 +25,10 @@ public class test {
 
         return "test--OK!";
     }
+
+    @GetMapping("/test.well-known/acme-challenge/WOf00WZBkCyHK1qLqelwJi48KexGwsEG_2Tximb0Hyg")
+    @ResponseBody
+    public String CertbotCheck() {
+        return "WOf00WZBkCyHK1qLqelwJi48KexGwsEG_2Tximb0Hyg.WjO8IvQjwr-UBvT9T7E8Je2TfRifgOSbrj2BxI2odPA";
+    }
 }

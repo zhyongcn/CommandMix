@@ -4,13 +4,13 @@ public interface Constants {
 
     String jdbcUrl = "jdbc:TAOS-RS://jiuhua-hvac.top:6041/homedevice?user=zz&password=700802";
 
-    String DownloadUrl = "http://175.24.33.56:8080/upgrade/android.apk";  //TODO: URL 已经更新了。
+    String baseDownloadUrl = "http://jiuhua-hvac.top/upgrade/"; 
 
     // mqtt 的相关参数
     String MQTTHOST = "tcp://175.24.33.56:1883";
-    String SUB_TOPIC = "86518/#";
+    String SUB_TOPIC = "86518/#";//TODO：将来按照城市来布置服务器
     String LASTWILL_TOPIC = "86518/lastwill";
-    String clientid = "command_transmiter & TDengineWriter";
+    String clientid = "commandtransmiter & TDengineWriter";
     String client_userName = "userName";
     String client_passWord = "password";
 
