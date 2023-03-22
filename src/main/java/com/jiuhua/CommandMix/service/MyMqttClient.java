@@ -1,6 +1,8 @@
 package com.jiuhua.CommandMix.service;
 
 import com.jiuhua.CommandMix.pojo.CommandFromPhone;
+import com.jiuhua.CommandMix.pojo.Constants;
+
 import org.eclipse.paho.client.mqttv3.*;
 import org.eclipse.paho.client.mqttv3.persist.MemoryPersistence;
 import org.springframework.stereotype.Service;
@@ -11,9 +13,9 @@ import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
 @Service
-public class MyMqttClient { // spring 是不是天生单例？？
+public class MyMqttClient { 
 
-    public static final String HOST = "tcp://175.24.33.56:1883";
+    public static final String HOST = Constants.MQTTHOST;//TODO 这里的好多值都可以放到Constants里面去。
     public static final String SUB_TOPIC = "86518/#";
     public static final String LASTWILL_TOPIC = "86518/lastwill";
     private static final String clientid = "command_transmiter & TDengineWriter";
@@ -25,7 +27,6 @@ public class MyMqttClient { // spring 是不是天生单例？？
 
     // 重新链接
     public void startReconnect() {
-        // 单线程排定执行器？？
         scheduler = Executors.newSingleThreadScheduledExecutor();
         scheduler.scheduleAtFixedRate(new Runnable() {
             @Override
@@ -74,17 +75,19 @@ public class MyMqttClient { // spring 是不是天生单例？？
 
             client.connect(options);
 
-            //TODO 把订阅单独列出来作为一个bean，使用单独生成的客户端，不同的id，也许可以解决不断重连的问题。
-            //TODO 好像真的是断开，不是销毁，那么为什么执行test的网页请求才能开始订阅？ 与懒加载有关？  try 用代码来试验。
-            // 订阅消息 TODO：本程序目前只publish发布 不 subscribe订阅
-            int[] Qos = { 1 };
-            // 设置订阅的topic，TODO：将来按照城市来布置服务器
-            String[] subTopics = { SUB_TOPIC };
-            client.subscribe(subTopics, Qos);
-
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public void subsribe() throws MqttException {
+        //TODO 把订阅单独列出来作为一个bean，使用单独生成的客户端，不同的id，也许可以解决不断重连的问题。
+        //TODO 好像真的是断开，不是销毁，那么为什么执行test的网页请求才能开始订阅？ 与懒加载有关？  try 用代码来试验。
+        // 订阅消息 TODO：本程序目前只publish发布 不 subscribe订阅
+        int[] Qos = { 1 };
+        // 设置订阅的topic，TODO：将来按照城市来布置服务器
+        String[] subTopics = { SUB_TOPIC };
+        client.subscribe(subTopics, Qos);
     }
 
     public void publish(CommandFromPhone commandFromPhone) {

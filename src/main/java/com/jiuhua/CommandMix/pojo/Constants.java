@@ -6,6 +6,15 @@ public interface Constants {
 
     String DownloadUrl = "http://175.24.33.56:8080/upgrade/android.apk";  //TODO: URL 已经更新了。
 
+    // mqtt 的相关参数
+    String MQTTHOST = "tcp://175.24.33.56:1883";
+    String SUB_TOPIC = "86518/#";
+    String LASTWILL_TOPIC = "86518/lastwill";
+    String clientid = "command_transmiter & TDengineWriter";
+    String client_userName = "userName";
+    String client_passWord = "password";
+
+
     int roomState_OFF = 0;
     int roomState_MANUAL = 1;
     int roomState_AUTO = 2;

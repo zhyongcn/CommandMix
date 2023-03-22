@@ -12,7 +12,7 @@ import com.jiuhua.CommandMix.service.MyMqttClient;
 @Controller
 public class AndroidCommand {
     @Autowired
-    private MyMqttClient myMqttClient = null;
+    private MyMqttClient myMqttClient = new MyMqttClient();//todo 
 
     // @RequestMapping("/command")
     @PostMapping("/command")

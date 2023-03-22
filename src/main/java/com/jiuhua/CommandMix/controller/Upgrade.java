@@ -47,7 +47,7 @@ public class Upgrade {
     @GetMapping("/upgrade/boiler.apk")
     void downloadBoilerApkFile(final HttpServletResponse response) throws Exception {
 
-        // 获取文件
+        // 获取文件   //FIXME: 下载的文件0字节
         File file = new File("/home/zz/upgrade/boiler.apk");//TODO: 这里环境不同，不同的主机不一样。
         // 文件名
         String fileName = file.getName();

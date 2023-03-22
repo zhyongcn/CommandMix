@@ -389,6 +389,8 @@ public class MqttReceriveCallback implements MqttCallback {
             }
 
         }
+
+
         // Class.forName("com.taosdata.jdbc.TSDBDriver");
         // String jdbcUrl =
         // "jdbc:TAOS://175.24.33.56:6030/homedevice?user=zz&password=700802";
