@@ -12,6 +12,8 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
 
+//note: this file is in order to publish mqtt message.
+//the command form phone need to be transport.
 @Service
 public class MyMqttClient { 
 

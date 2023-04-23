@@ -1,8 +1,9 @@
 package com.jiuhua.CommandMix.pojo;
 
 public interface Constants {
+    String wxMiniAppId = "wxe1b41bcfa8dbf488";
+    String wxSecret = "c7d5638233a5bef0d9bd0bcf0b124441";
 
-    String jdbcUrl = "jdbc:TAOS-RS://jiuhua-hvac.top:6041/homedevice?user=zz&password=700802";
 
     String baseDownloadUrl = "http://jiuhua-hvac.top/upgrade/"; 
 

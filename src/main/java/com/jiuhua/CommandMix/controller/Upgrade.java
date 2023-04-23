@@ -20,8 +20,6 @@ import jakarta.servlet.http.HttpServletResponse;
 
 @Controller
 public class Upgrade {
-    @Autowired
-    private MyMqttClient myMqttClient = null;
 
     // 提供待升级的Android app的信息
     @GetMapping("/upgrade/versioninfo")
@@ -32,13 +30,8 @@ public class Upgrade {
         versioninfo.setVersionCode(2);
         versioninfo.setAppVersion("2.0.0");
         versioninfo.setDownloadUrl(Constants.baseDownloadUrl);
-        versioninfo.setVersionDesc("1. this is a test about app upgrade.");
+        versioninfo.setVersionDesc("\n this is a test about app upgrade.");
 
-        if (myMqttClient.getClient() == null) {
-            myMqttClient.start();
-            System.out.println("I am upgradeInfo myMqttClient.start()，重新连接.......");
-        }
-        myMqttClient.publish();
         return versioninfo;
     }
 
@@ -47,7 +40,7 @@ public class Upgrade {
     @GetMapping("/upgrade/boiler.apk")
     void downloadBoilerApkFile(final HttpServletResponse response) throws Exception {
 
-        // 获取文件   //FIXME: 下载的文件0字节
+        // 获取文件
         File file = new File("/root/upgrade/boiler.apk");//TODO: 这里环境不同，不同的主机不一样。
         // 文件名
         String fileName = file.getName();
