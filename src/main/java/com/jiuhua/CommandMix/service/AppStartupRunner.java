@@ -17,14 +17,14 @@ public class AppStartupRunner implements ApplicationRunner {
         // 1、建表 DDL (data definition language)
         String createUserSQL = "create table if not exists wxuserinfo (" +
                 "id integer primary key autoincrement," +
-                "openid text," +
-                "chipid int," +
-                "unionid text," +
-                "router_ssid text," +
-                "router_bssid text," +
-                "router_passwd text," +
-                "phone_mac text," +
-                "namecard_mac int" +
+                "openid         text," +
+                "chipid         text," +
+                "unionid        text," +
+                "router_ssid    text," +
+                "router_bssid   text," +
+                "router_passwd  text," +
+                "phone_mac      text," +
+                "namecard_mac   text" +
                 ")";
 
         jdbcTemplate.update(createUserSQL);

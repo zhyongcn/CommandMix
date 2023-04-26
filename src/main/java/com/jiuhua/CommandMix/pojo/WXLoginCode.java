@@ -1,7 +1,6 @@
 package com.jiuhua.CommandMix.pojo;
 
-//这个类，好像只是用来接收信息的。
-public class JsCode {
+public class WXLoginCode {
     private String errMsg;
     private String code;
 
